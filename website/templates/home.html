@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="container text-center" style="min-height: 100vh">
+  <h1 class="display-1 mt-4">Welcome to my Blog</h1>
+  <div class="list-group mt-4 mx-auto" style="max-width: 1000px">
+    {% for post in posts %}
+    <a
+      href="#"
+      class="list-group-item list-group-item-action flex-column align-items-start"
+      data-post-id="{{ post.id }}"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ post.username }}</h5>
+        <small class="text-muted"
+          >{{ post.date_created.strftime('%Y-%m-%d') }}</small
+        >
+      </div>
+      <br />
+      <p class="mb-1">{{ post.text }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+
+
+{% endblock %}
